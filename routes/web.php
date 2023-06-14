@@ -19,7 +19,7 @@ use App\Http\Controllers\FollowController;
 */
 
 Route::get('/admins-only', function () {
-    return 'Only admins should be able to see this page';
+  return 'Only admins should be able to see this page';
 })->middleware('can:visitAdminPages');
 
 
@@ -42,6 +42,7 @@ Route::get('/post/{post}', [PostController::class, 'viewSinglePost']);
 Route::delete('/post/{post}', [PostController::class, 'delete'])->middleware('can:delete,post');
 Route::get('/post/{post}/edit', [PostController::class, 'showEditForm'])->middleware('can:update,post');
 Route::put('/post/{post}/', [PostController::class, 'actuallyUpdate'])->middleware('can:update,post');
+Route::get('/search/{term}', [PostController::class, 'search']);
 
 // Profile related routes
 Route::get('/profile/{user:username}', [UserController::class, 'profile']);
